@@ -1,0 +1,11 @@
+csshtml, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+app-root {
+  display: block; /* Changes from inline to block */
+  width: 100%;
+  min-height: 100%; /* Or height: 100% depending on your layout */
+}
