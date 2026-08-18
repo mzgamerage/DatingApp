@@ -5,19 +5,26 @@ import { MemberDetailed } from '../features/members/member-detailed/member-detai
 import { Messages } from '../features/messages/messages';
 import { Lists } from '../features/lists/lists';
 import { authGuard } from '../core/guards/auth-guard';
+import { TestErrors } from '../features/test-errors/test-errors';
+import { Errorpage } from '../shared/errorpage/errorpage';
+import { NotFound } from '../shared/not-found/not-found';
+import { ServerError } from '../shared/server-error/server-error';
 
 export const routes: Routes = [
-    {path: '', component: Home},
+    {path: 'home', component: Home},
     { path: '',
       runGuardsAndResolvers: 'always',
       canActivate: [authGuard],
       children: [
+
         {path: 'members', component: MemberList},
         {path: 'members/:id', component: MemberDetailed },
         {path: 'messages', component: Messages },
         {path: 'lists', component: Lists}
         ]
     },
-    
-    {path: '**', component: Home}
+    {path: 'errors' , component: TestErrors },
+    {path: 'errorpage', component: Errorpage },
+    {path: 'server-error', component: ServerError },
+    {path: '**', component: NotFound}
 ];
